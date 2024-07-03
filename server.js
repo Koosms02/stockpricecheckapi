@@ -12,10 +12,8 @@ const runner = require('./test-runner');
 const app = express();
 require('dotenv').config();
 
-const uri = "mongodb+srv://koosms02:jIuUz99f0CwKtFi5@cluster0.723k4im.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-
-mongoose.connect(uri, { useNewUrlParser: true });
+const uri = process.env.DB
+mongoose.connect(uri);
 const db = mongoose.connection;
 
 db.on('error', (error) => console.error(error));
